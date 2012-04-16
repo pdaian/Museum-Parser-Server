@@ -19,10 +19,9 @@ content = urllib2.urlopen(url).read()
 soup = bs(content)
 exhibits = soup.findAll('ol')
 assert str(exhibits[0]["class"]) == "exhibitions"
-for exhibit in exhibits.contents:
+for exhibit in exhibits[0].contents:
     try:
-	exhibit.contents
+	print str(exhibit.h3.contents)
     except:
 	# Indicates a malformed entry, possible a newline
 	pass
-
